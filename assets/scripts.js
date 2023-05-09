@@ -13,10 +13,10 @@ function toggleFilters(category) {
     removeActiveClass();
     images.forEach(image => {
         if(category === "Tous" || image.dataset.galleryTag === category) {
-            image.classList.remove('hidden');
+            image.closest("a").classList.remove('hidden');
         }
         else {
-            image.classList.add('hidden');
+            image.closest("a").classList.add('hidden');
         }
     });
 }
