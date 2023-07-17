@@ -12,13 +12,21 @@ function toggleFilters(category) {
     document.querySelector("#gallery").scrollIntoView();
     removeActiveClass();
     images.forEach(image => {
+        const curParent = image.closest('a');
         if(category === "Tous" || image.dataset.galleryTag === category) {
-            image.closest("a").classList.remove('hidden');
+            curParent.classList.remove('hidden');
+            if(category === "Tous") {
+                curParent.dataset.fslightbox = "gallery"
+            } else {
+                curParent.dataset.fslightbox = category;
+            }
         }
         else {
-            image.closest("a").classList.add('hidden');
+            curParent.classList.add('hidden');
+            curParent.dataset.fslightbox = "gallery"
         }
     });
+    refreshFsLightbox();
 }
 
 function removeActiveClass() {
